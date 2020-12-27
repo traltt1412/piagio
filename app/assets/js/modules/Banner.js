@@ -20,7 +20,15 @@ export default class Banner extends BaseModule {
         targetEl && this.scrollTo(targetEl)
       })
     })
+
+    // this.el.addEventListener("click", e => {
+    //   console.log(e)
+    //   if (e.target.classList.contains("js--trigger")) {
+    //     console.log(e.target)
+    //   }
+    // })
   }
+  
 
   scrollTo(el) {
     const duration = 500

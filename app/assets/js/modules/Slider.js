@@ -1,6 +1,7 @@
 import BaseModule from "./BaseModule"
 import Swiper from "swiper/swiper-bundle"
 import "swiper/swiper-bundle.css"
+import Banner from "./Banner"
 
 export default class Slider extends BaseModule {
   constructor(el, factory) {
@@ -9,6 +10,8 @@ export default class Slider extends BaseModule {
     this.swiperContainer = this.el.querySelector(".swiper-container")
     this.swiperNext = this.el.querySelector(".swiper-button-next") || null
     this.swiperPrev = this.el.querySelector(".swiper-button-prev") || null
+    this.paging = this.el.querySelector(".swiper-pagination") || null
+    this.delay = parseInt(this.el.getAttribute("data-delay") || 3000) 
     this.register()
   }
 
@@ -19,12 +22,24 @@ export default class Slider extends BaseModule {
       observer : true,
       observeParents: true,
       loop: true,
-      autoplay: {
-        delay: 7000,
+      pagination: {
+        el: this.paging
       },
-      navigation: {
-        nextEl: this.swiperNext,
-        prevEl: this.swiperPrev,
+      autoplay: {
+        delay: this.delay,
+      },
+      breakpoints: {
+        768: {
+          navigation: {
+            nextEl: this.swiperNext,
+            prevEl: this.swiperPrev,
+          }
+        }
+      },
+      on: {
+        init: () => {
+          new Banner(this.el)
+        }
       }
     }
   }

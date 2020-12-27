@@ -86,6 +86,49 @@
 
     .swiper-container {
       width: 100%;
+
+      .swiper-button-prev, .swiper-button-next {
+        width: 2.1vw;
+        height: 3.4vw;
+        margin-top: 0;
+        transform: translateY(-50%);
+
+        @include screen (small, false) {
+          display: none;
+        }
+
+        &::after {
+          font-size: 3.4vw;
+        }
+      }
+
+      .swiper-button-prev {
+        left: 1.44vw;
+      }
+      
+      .swiper-button-next {
+        right: 1.44vw;
+      }
+    }
+
+    .swiper-pagination {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+
+      @include screen (small) {
+        margin-top: 10px;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      margin: 0 5px;
+
+      @include screen (small) {
+        width: 10px;
+        height: 10px;
+      }
     }
 
     .swiper-row {
